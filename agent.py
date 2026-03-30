@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 
 # API key
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "apikey"
 # load_dotenv()
 # os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
