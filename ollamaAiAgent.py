@@ -15,10 +15,10 @@ llm = ChatOllama(model="phi")
 CUSTOM_PREFIX = """
 You are an expert data analyst.
 
-Follow these steps STRICTLY:
+STRICTLY follow these steps and output format:
 1. Convert the user question into a correct SQL query.
 2. Execute the SQL query.
-3. Return response in this format:
+3. Return ONLY the following, in this exact format (no extra text, no markdown, no code blocks):
 
 SQL Query:
 <query>
@@ -32,7 +32,9 @@ Explanation:
 Rules:
 - Only use available tables
 - Do not hallucinate columns
-- Keep explanation short and clear
+- Do NOT add any extra commentary, markdown, or formatting
+- Output must start with 'SQL Query:' and follow the format exactly
+- If you do not know the answer, say so clearly in the Explanation
 """
 
 # Agent

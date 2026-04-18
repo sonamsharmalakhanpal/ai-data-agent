@@ -1,0 +1,17 @@
+{
+  "name": "ai-data-agent",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "AI Data Agent",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node test-claude.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.3"
+  }
+}
