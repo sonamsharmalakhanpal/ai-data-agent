@@ -1,0 +1,67 @@
+    AI data agent queries
+
+    python <file_name> "<your_query>"
+
+    python dataAiAgent.py "What is total revenue from closed deals?"
+
+    python ollamaAiAgent.py "Who are the top 5 sales representatives by revenue?"
+
+    python ollamaAiAgent.py "What is the monthly revenue trend for the past year?"
+
+    python ollamaAiAgent.py  "Which products are low in stock?"
+
+    python ollamaAiAgent.py "What is the percentage of returning customers?"
+
+    python ollamaAiAgent.py "What is total revenue from closed deals?"
+
+    Total Revenue
+    User Question: "What is the total revenue from closed deals?"
+    SQL Query:
+
+
+    SELECT SUM(revenue) AS total_revenue
+    FROM deals
+    WHERE status = 'closed';
+    Top Sales Representatives
+    User Question: "Who are the top 5 sales representatives by revenue?"
+    SQL Query:
+
+
+    SELECT sales_rep, SUM(revenue) AS total_revenue
+    FROM deals
+    GROUP BY sales_rep
+    ORDER BY total_revenue DESC
+    LIMIT 5;
+    Monthly Revenue Trend
+    User Question: "What is the monthly revenue trend for the past year?"
+    SQL Query:
+
+
+    SELECT strftime('%Y-%m', date) AS month, SUM(revenue) AS monthly_revenue
+    FROM deals
+    WHERE date >= date('now', '-1 year')
+    GROUP BY month
+    ORDER BY month;
+    Low Stock Products
+    User Question: "Which products are low in stock?"
+    SQL Query:
+
+
+    SELECT product_name, stock
+    FROM inventory
+    WHERE stock < 10;
+    Customer Retention
+    User Question: "What is the percentage of returning customers?"
+    SQL Query:
+
+
+    SELECT (COUNT(DISTINCT customer_id) * 100.0 / (SELECT COUNT(*) FROM customers)) AS retention_percentage
+    FROM orders
+    WHERE customer_id IN (
+        SELECT customer_id
+        FROM orders
+        GROUP BY customer_id
+        HAVING COUNT(*) > 1
+    );
+    These queries are examples of how the agent can convert natural language questions into valid SQLite queries.
+

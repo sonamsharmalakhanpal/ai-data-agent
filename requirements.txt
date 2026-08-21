@@ -1,0 +1,4 @@
+SQLAlchemy
+langchain
+langchain-core
+langchain-ollama
